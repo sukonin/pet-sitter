@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -17,12 +19,13 @@ public class MtBeanTest {
 
     @Test
     public void testConfig() {
-        //TODO 6. Modify this class to use the new set of configuration files, created by resolving TODO 5.
-        //TODO 7. Try to use wildcards as well.
         ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring/others/sample-config-01.xml");
 
         MultipleTypesBean mtBean = (MultipleTypesBean) ctx.getBean("mtBean");
         assertNotNull(mtBean);
 
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/others/*-configuration.xml");
+
+        assertEquals(ctx.getBeanDefinitionCount(), context.getBeanDefinitionCount());
     }
 }
