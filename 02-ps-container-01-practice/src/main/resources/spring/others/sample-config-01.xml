@@ -4,7 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- TODO 5. Split this file in multiple configuration files. -->
     <bean id="mtBean" class="com.ps.beans.others.MultipleTypesBean">
         <property name="noOne" value="1"/>
         <property name="noTwo" value="2"/>

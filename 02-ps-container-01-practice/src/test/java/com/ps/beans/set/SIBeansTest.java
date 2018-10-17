@@ -35,8 +35,5 @@ public class SIBeansTest {
         ComplexBean2Impl complexBean2 = ctx.getBean("complexBean2", ComplexBean2Impl.class);
         assertNotNull(complexBean2.getSimpleBean());
         assertTrue(complexBean2.isComplex());
-
-
-        //TODO 4. Retrieve beans of types ComplexBean and make sure their dependencies were correctly set.
     }
 }
