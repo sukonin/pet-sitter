@@ -1,7 +1,10 @@
 package com.ps.sample;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Required;
 
 /**
  * Created by iuliana.cosmina on 3/28/16.
@@ -22,8 +25,9 @@ public class ComplexBean2 {
 
     // TODO 10. Add JSR 250 attributes to control initialization and destruction of this bean
 
+    @Required
     public void setSimpleBean2(SimpleBean simpleBean2) {
-        logger.info(" --> Stage 2: Calling the setter.");
+        logger.info(" --> Stage 2: Calling the setter. With annotation");
         this.simpleBean2 = simpleBean2;
     }
 
@@ -31,8 +35,9 @@ public class ComplexBean2 {
      * The initialization method.
      * Just for fun: it instantiates the simpleBean2 only if the current time is even.
      */
+    @PostConstruct
     private void initMethod() {
-        logger.info(" --> Stage 3: Calling the initMethod.");
+        logger.info(" --> Stage 3: Calling the initMethod. With annotation");
         long ct = System.currentTimeMillis();
         if (ct % 2 == 0) {
             simpleBean2 = new SimpleBean();
@@ -42,8 +47,9 @@ public class ComplexBean2 {
     /**
      * Destroy method
      */
+    @PreDestroy
     private boolean destroyMethod() {
-        logger.info(" --> Calling the destroyMethod.");
+        logger.info(" --> Calling the destroyMethod. With annotation");
         simpleBean1 = null;
         simpleBean2 = null;
         return true;
